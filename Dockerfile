@@ -5,7 +5,7 @@ WORKDIR /app
 
 RUN find . -name '*.jar'
 
-COPY ./build/libs/*.jar ./app.jar
+COPY  ./target/*.jar app.jar
 
 CMD ["java","-jar", "app.jar"]
 
