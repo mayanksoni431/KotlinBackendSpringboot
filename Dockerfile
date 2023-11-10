@@ -3,9 +3,9 @@ FROM openjdk:17-jdk-alpine
 
 WORKDIR /app
 
-RUN find . -name '*.jar'
+COPY . .
 
-COPY  ./target/*.jar app.jar
+COPY ./build/libs/*.jar app.jar
 
 CMD ["java","-jar", "app.jar"]
 
