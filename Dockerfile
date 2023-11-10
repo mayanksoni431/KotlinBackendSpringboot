@@ -5,7 +5,7 @@ WORKDIR /app
 
 COPY . .
 
-COPY *.jar app.jar
+RUN find . -name prototype-*.jar -exec cp {} ./app.jar \;
 
 CMD ["java","-jar", "app.jar"]
 
