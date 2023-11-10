@@ -19,7 +19,7 @@ jobs:
       - name: Set up for java version
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
+          java-version: 17
 
       - name: Cleaning cache for Gradle
         run: gradle clean
