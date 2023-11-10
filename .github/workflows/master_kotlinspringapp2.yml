@@ -26,6 +26,9 @@ jobs:
           username: ${{ secrets.AzureAppService_ContainerUsername_3870622a39c642569c0408e2c667cfe6 }}
           password: ${{ secrets.AzureAppService_ContainerPassword_ae4964ecddda4613a528767e89f65d8e }}
 
+      - name: Build jar with Gradle
+        run: gradle build
+
       - name: Build and push container image to registry
         uses: docker/build-push-action@v3
         with:
