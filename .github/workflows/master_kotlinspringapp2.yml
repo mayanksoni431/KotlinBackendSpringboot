@@ -21,8 +21,11 @@ jobs:
         with:
           java-version: '17'
 
+      - name: Cleaning cache for Gradle
+        run: gradle clean
+
       - name: Build jar with Gradle
-        run: gradle build
+        run: gradle jar --output .
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
