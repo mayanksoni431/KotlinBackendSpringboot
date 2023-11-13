@@ -24,17 +24,11 @@ jobs:
       - name: Build with Gradle
         run: gradle clean build
 
-      - name: Run the ls command
-        run: ls
-
-      - name: Run the find command
-        run: find -name prototype-*.jar
-
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: java-app
-          path: './build/libs/*.jar'
+          path: './build/libs/*-SNAPSHOT.jar'
 
   deploy:
     runs-on: ubuntu-latest
