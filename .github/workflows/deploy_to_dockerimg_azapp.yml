@@ -38,14 +38,12 @@ jobs:
       - name: building docker image with buildx and env var
         run: docker buildx build --build-arg JAR_FILE=./build/libs/*-SNAPSHOT.jar .
 
-      - name: Build and push container image to registry
+      - name: pushing container image to registry
         if: ${{ github.event_name == 'push' }}
-        needs: build-and-push
         uses: docker/build-push-action@v3
         with:
           push: true
           tags: kotlinspringdockerrg.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_3870622a39c642569c0408e2c667cfe6 }}/kotlinspringdockerrg/samples/hello-world:${{ github.sha }}
-          file: ./Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
