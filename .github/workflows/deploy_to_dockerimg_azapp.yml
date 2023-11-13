@@ -16,6 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
       - name: Set up for java version
         uses: actions/setup-java@v3
         with:
@@ -31,6 +34,9 @@ jobs:
 
       - name: Building clean jar with Gradle
         run: gradle clean build
+
+      - name: Setting docker buildx env path for
+        run: docker buildx build --env JAR_FILE=./build/libs/*-SNAPSHOT.jar
 
       - name: Build and push container image to registry
         uses: docker/build-push-action@v3
