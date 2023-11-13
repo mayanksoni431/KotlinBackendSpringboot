@@ -38,6 +38,9 @@ jobs:
       - name: Relocating app jar file
         run: cp ./build/libs/*-SNAPSHOT.jar app.jar
 
+      - name: Giving access permission
+        run: chmod 777 app.jar
+
       - name: Build and push container image to registry
         uses: docker/build-push-action@v3
         with:
