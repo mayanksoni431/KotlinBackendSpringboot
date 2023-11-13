@@ -3,8 +3,6 @@ FROM openjdk:17-jdk-alpine
 
 VOLUME /tmp
 
-COPY ./build/libs/*-SNAPSHOT.jar app.jar
-
-CMD ["java","-jar", "app.jar"]
+CMD ["java","-jar", "$JAR_FILE"]
 
 EXPOSE 8080
