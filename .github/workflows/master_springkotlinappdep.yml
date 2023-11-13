@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy WAR app to Azure Web App - springkotlinappdep
+name: Build and deploy JAR app to Azure Web App - springkotlinappdep
 
 on:
   push:
@@ -24,11 +24,17 @@ jobs:
       - name: Build with Gradle
         run: gradle clean build
 
+      - name: Run the ls command
+        run: ls
+
+      - name: Run the find command
+        run: find -name prototype-*.jar
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          path: './build/libs/*.jar'
 
   deploy:
     runs-on: ubuntu-latest
