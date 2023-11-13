@@ -25,11 +25,8 @@ jobs:
           java-version: 17
           distribution: adopt
 
-      - name: Cleaning cache for Gradle
-        run: gradle clean
-
-      - name: Build jar with Gradle
-        run: gradle build
+      - name: Building clean jar with Gradle
+        run: gradle clean build
 
       - name: Log in to registry
         uses: docker/login-action@v2
