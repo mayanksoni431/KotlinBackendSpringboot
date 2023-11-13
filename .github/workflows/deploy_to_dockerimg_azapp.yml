@@ -41,10 +41,10 @@ jobs:
       - name: Push Docker image
         uses: actions/docker/push-image@v3
         with:
-          registry: kotlinspringdockerrg.azurecr.io
+          registry: https://kotlinspringdockerrg.azurecr.io/
           image: springkotlinapp2:latest
-          username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
-          password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+          username: ${{ secrets.AzureAppService_ContainerUsername_3870622a39c642569c0408e2c667cfe6 }}
+          password: ${{ secrets.AzureAppService_ContainerPassword_ae4964ecddda4613a528767e89f65d8e }}
 
   deploy:
     runs-on: ubuntu-latest
