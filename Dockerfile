@@ -1,4 +1,7 @@
 # syntax=docker/dockerfile:1
+buildkit:
+  inlineCache:
+    - path: ./build/libs
 FROM openjdk:17-jdk-alpine
 
 COPY . .
