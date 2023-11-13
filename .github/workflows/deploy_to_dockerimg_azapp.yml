@@ -36,7 +36,7 @@ jobs:
         run: gradle clean build
 
       - name: Setting docker buildx env path for
-        run: docker buildx build --env JAR_FILE=./build/libs/*-SNAPSHOT.jar
+        run: docker buildx build --build-arg JAR_FILE=./build/libs/*-SNAPSHOT.jar
 
       - name: Build and push container image to registry
         uses: docker/build-push-action@v3
