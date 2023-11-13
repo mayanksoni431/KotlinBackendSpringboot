@@ -25,9 +25,6 @@ jobs:
           java-version: 17
           distribution: adopt
 
-      - name: Building clean jar with Gradle
-        run: gradle clean build
-
       - name: Log in to registry
         uses: docker/login-action@v2
         with:
@@ -35,8 +32,8 @@ jobs:
           username: ${{ secrets.AzureAppService_ContainerUsername_3870622a39c642569c0408e2c667cfe6 }}
           password: ${{ secrets.AzureAppService_ContainerPassword_ae4964ecddda4613a528767e89f65d8e }}
 
-      - name: running find cmd
-        run: find -name *-SNAPSHOT.jar
+      - name: Building clean jar with Gradle
+        run: gradle clean build
 
       - name: Build and push container image to registry
         uses: docker/build-push-action@v3
