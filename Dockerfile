@@ -3,6 +3,6 @@ FROM openjdk:17-jdk-alpine
 
 COPY . .
 
-CMD ["java","-jar", "app.jar"]
+CMD ["java","-jar", "app2.jar"]
 
 EXPOSE 8080

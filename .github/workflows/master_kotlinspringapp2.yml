@@ -36,13 +36,13 @@ jobs:
         run: gradle clean build
 
       - name: Check Files
-        run: ls -ltr
+        run: -ltr build/libs/*.jar
 
       - name: Relocating app jar file
-        run: cp ./build/libs/*-SNAPSHOT.jar app.jar
+        run: cp ./build/libs/*-SNAPSHOT.jar app2.jar
 
       - name: Giving access permission
-        run: chmod 777 app.jar
+        run: chmod 777 app2.jar
 
       - name: Check Files
         run: ls -ltr
