@@ -36,7 +36,7 @@ jobs:
         run: gradle clean build
 
       - name: Check Files
-        run: -ltr build/libs/*.jar
+        run: ls -ltr build/libs/*.jar
 
       - name: Relocating app jar file
         run: cp ./build/libs/*-SNAPSHOT.jar app2.jar
