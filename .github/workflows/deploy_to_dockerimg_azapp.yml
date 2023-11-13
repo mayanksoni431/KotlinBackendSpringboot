@@ -36,14 +36,15 @@ jobs:
         run: gradle clean build
 
       - name: building docker image with buildx and env var
-        run: docker buildx build --build-arg JAR_FILE=./build/libs/*-SNAPSHOT.jar .
+        run: docker buildx build --build-arg JAR_FILE=./build/libs/*-SNAPSHOT.jar -t springkotlinapp2 .
 
-      - name: pushing container image to registry
-        if: ${{ github.event_name == 'push' }}
-        uses: docker/build-push-action@v3
+      - name: Push Docker image
+        uses: actions/docker/push-image@v3
         with:
-          push: true
-          tags: kotlinspringdockerrg.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_3870622a39c642569c0408e2c667cfe6 }}/kotlinspringdockerrg/samples/hello-world:${{ github.sha }}
+          registry: kotlinspringdockerrg.azurecr.io
+          image: springkotlinapp2:latest
+          username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+          password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
 
   deploy:
     runs-on: ubuntu-latest
