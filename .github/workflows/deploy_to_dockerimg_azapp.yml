@@ -28,9 +28,6 @@ jobs:
       - name: Building clean jar with Gradle
         run: gradle clean build
 
-      - name: running find cmd
-        run: find -name *-SNAPSHOT.jar
-
       - name: Log in to registry
         uses: docker/login-action@v2
         with:
